@@ -32,16 +32,16 @@ public class Generator {
                     break;
                 }
                 case "2":{
-                    System.out.println("Choice is 2");
+                    checkStrength();
                     printOptions();
                     break;
                 }
                 case "3":{
-                    System.out.println("Chal bhai chalate hai ab..");
+                    System.out.println("Program Exited Successfully. Thank you for Using our service !");
                     break;
                 }
                 default:{
-                    System.out.println("Kindly Slect one of the following");
+                    System.out.println("Kindly Select one of the following");
                     printOptions();
                 }
 
@@ -76,10 +76,6 @@ public class Generator {
         printYesOrNo();
         includeSymbols = returnAppropriate(scanner.next());
 
-        System.out.println(includeUpper);
-        System.out.println(includeLower);
-        System.out.println(includeInteger);
-        System.out.println(includeSymbols);
 
         if(!includeUpper && !includeLower && !includeInteger && !includeSymbols){
             System.out.println("In order to generate password you must choose at least Yes one time");
@@ -123,6 +119,16 @@ public class Generator {
         return new Password(password.toString());
     }
 
+
+    public void checkStrength(){
+        //String userPass = scanner.nextLine();
+        final Scanner newScanner = new Scanner(System.in);
+
+        System.out.println("Enter the password :");
+        String userPass = newScanner.nextLine();
+        final Password pass = new Password(userPass);
+        pass.returnScore();
+    }
     private void printYesOrNo() {
         System.out.println("1 : Yes");
         System.out.println("2 : No");
@@ -152,6 +158,7 @@ public class Generator {
         System.out.print("Choice:");
 
     }
+
 
 
 }
